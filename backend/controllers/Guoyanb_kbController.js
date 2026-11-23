@@ -57,8 +57,8 @@ function Guoyanb_detail(Guoyanb_req, Guoyanb_res) {
 /**
  * 删除知识库文件
  */
-function Guoyanb_remove(Guoyanb_req, Guoyanb_res) {
-  const Guoyanb_ok = Guoyanb_kbModel.Guoyanb_remove(Guoyanb_req.params.id);
+async function Guoyanb_remove(Guoyanb_req, Guoyanb_res) {
+  const Guoyanb_ok = await Guoyanb_kbModel.Guoyanb_remove(Guoyanb_req.params.id);
   if (!Guoyanb_ok) {
     return Guoyanb_fail(Guoyanb_res, '知识库文件不存在，删除失败', 4005);
   }

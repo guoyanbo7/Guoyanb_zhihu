@@ -187,3 +187,11 @@
 ```
 - 响应示例（失败）：`{ "code": 4004, "msg": "知识库问答失败：...", "data": {} }`
 - 修改时间：2026-11-23
+
+---
+
+### 补充：知识库存储与 MySQL 同步说明（2026-11-23）
+- 接口路径与参数（第 8–12 项）保持不变；本次按实验指导书数据层要求新增 MySQL 文档元数据表 `Guoyanb_kb_docs`（建表 SQL 见 `backend/sql/Guoyanb_kb_docs.sql` 与 `Guoyanb_database.md`）。
+- 上传（`/api/kb/upload`）成功后，后端在本地文件分块/向量化的同时，自动向 `Guoyanb_kb_docs` 登记一条文档元数据；删除（`DELETE /api/kb/files/:id`）时同步从该表删除。
+- 文档的分块文本与 1024 维向量仍存于 `backend/kb_data` 本地文件（运行时数据，已加入 .gitignore），检索逻辑不变；MySQL 表负责文档元数据的持久化与可重建。
+- 修改时间：2026-11-23

@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const { Guoyanb_parseFile } = require('./Guoyanb_kbParser');
 const Guoyanb_chatModel = require('./Guoyanb_chatModel');
+const { Guoyanb_pool } = require('../config/db');
 
 // ===== 配置（全部来自 backend/.env）=====
 const Guoyanb_apiKey = process.env.SILICONFLOW_API_KEY;
@@ -162,6 +163,40 @@ function Guoyanb_writeIndex(Guoyanb_index) {
 }
 
 /**
+ * 把文档元数据登记到 MySQL 文档表（容错，不影响文件主流程）
+ */
+async function Guoyanb_insertDoc(Guoyanb_meta) {
+  try {
+    await Guoyanb_pool.query(
+      'INSERT INTO Guoyanb_kb_docs ' +
+      '(Guoyanb_doc_uid, Guoyanb_doc_name, Guoyanb_doc_ext, Guoyanb_doc_size, ' +
+      'Guoyanb_chunk_count, Guoyanb_char_count, Guoyanb_doc_status, Guoyanb_upload_time, Guoyanb_remark) ' +
+      'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [
+        Guoyanb_meta.id, Guoyanb_meta.originalName, Guoyanb_meta.ext, Guoyanb_meta.size,
+        Guoyanb_meta.chunkCount, Guoyanb_meta.charCount, 'active',
+        new Date(Guoyanb_meta.uploadTime), '页面上传自动登记'
+      ]
+    );
+    console.log('[知识库] 文档元数据已同步到 MySQL 表 Guoyanb_kb_docs');
+  } catch (Guoyanb_dbErr) {
+    console.error('[知识库] 文档表写入失败（不影响文件存储）->', Guoyanb_dbErr.message);
+  }
+}
+
+/**
+ * 从 MySQL 文档表删除对应记录（容错）
+ */
+async function Guoyanb_deleteDoc(Guoyanb_id) {
+  try {
+    await Guoyanb_pool.query('DELETE FROM Guoyanb_kb_docs WHERE Guoyanb_doc_uid = ?', [Guoyanb_id]);
+    console.log('[知识库] 文档元数据已从 MySQL 表删除');
+  } catch (Guoyanb_dbErr) {
+    console.error('[知识库] 文档表删除失败（不影响文件删除）->', Guoyanb_dbErr.message);
+  }
+}
+
+/**
  * 生成知识库文件 ID
  */
 function Guoyanb_genId() {
@@ -223,6 +258,9 @@ async function Guoyanb_ingest(Guoyanb_originalName, Guoyanb_storedPath, Guoyanb_
   Guoyanb_index.files.push(Guoyanb_meta);
   Guoyanb_writeIndex(Guoyanb_index);
 
+  // 同步登记到 MySQL 文档表
+  await Guoyanb_insertDoc(Guoyanb_meta);
+
   return Guoyanb_meta;
 }
 
@@ -254,7 +292,7 @@ function Guoyanb_detail(Guoyanb_id) {
 /**
  * 删除知识库文件（索引 + 数据文件 + 原始上传文件）
  */
-function Guoyanb_remove(Guoyanb_id) {
+async function Guoyanb_remove(Guoyanb_id) {
   const Guoyanb_index = Guoyanb_readIndex();
   const Guoyanb_idx = Guoyanb_index.files.findIndex(Guoyanb_f => Guoyanb_f.id === Guoyanb_id);
   if (Guoyanb_idx === -1) return false;
@@ -271,6 +309,10 @@ function Guoyanb_remove(Guoyanb_id) {
 
   Guoyanb_index.files.splice(Guoyanb_idx, 1);
   Guoyanb_writeIndex(Guoyanb_index);
+
+  // 同步从 MySQL 文档表删除
+  await Guoyanb_deleteDoc(Guoyanb_id);
+
   return true;
 }
 
