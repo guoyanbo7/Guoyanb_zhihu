@@ -1,0 +1,60 @@
+<!--
+  姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+  页面：数据库连接测试（输入用户名/密码连接 MySQL，成功与失败均有提示）
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数据库连接测试 · 知乎制作和模仿</title>
+  <link rel="stylesheet" href="css/Guoyanb_common.css" />
+  <link rel="stylesheet" href="css/Guoyanb_page.css" />
+</head>
+<body>
+  <canvas id="Guoyanb_bg_canvas"></canvas>
+
+  <div class="Guoyanb_container">
+    <div class="Guoyanb_topbar">
+      <a class="Guoyanb_back_link" href="index.html">← 返回首页</a>
+    </div>
+
+    <div class="Guoyanb_page_card">
+      <h1 class="Guoyanb_page_title">数据库连接测试</h1>
+      <p class="Guoyanb_page_desc">输入用户名与密码，测试 MySQL 数据库连接（默认 root / 123456）</p>
+
+      <div class="Guoyanb_api_info">
+        <div class="Guoyanb_api_label">后端接口地址</div>
+        <code>POST http://localhost:8201/api/db/test</code>
+      </div>
+
+      <form id="Guoyanb_db_form">
+        <div class="Guoyanb_form_group">
+          <label for="Guoyanb_user">用户名</label>
+          <input class="Guoyanb_input" type="text" id="Guoyanb_user" value="root" placeholder="请输入用户名" />
+        </div>
+
+        <div class="Guoyanb_form_group">
+          <label for="Guoyanb_password">密码</label>
+          <input class="Guoyanb_input" type="password" id="Guoyanb_password" value="123456" placeholder="请输入密码" />
+        </div>
+
+        <div class="Guoyanb_form_group">
+          <label for="Guoyanb_host">主机地址</label>
+          <input class="Guoyanb_input" type="text" id="Guoyanb_host" value="localhost" placeholder="请输入主机地址" />
+        </div>
+
+        <div class="Guoyanb_form_actions">
+          <button type="submit" class="Guoyanb_btn">测试连接</button>
+          <button type="reset" class="Guoyanb_btn" style="background: rgba(255,255,255,0.12);">重置</button>
+        </div>
+      </form>
+
+      <div class="Guoyanb_result" id="Guoyanb_result"></div>
+    </div>
+  </div>
+
+  <script src="js/Guoyanb_canvas.js"></script>
+  <script src="js/Guoyanb_database.js"></script>
+</body>
+</html>

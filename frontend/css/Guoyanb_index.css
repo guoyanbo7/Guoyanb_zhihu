@@ -1,0 +1,183 @@
+/*
+ * 姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+ * 文件：首页 index.html 专属样式
+ */
+
+/* 头部信息条 */
+.Guoyanb_hero {
+  text-align: center;
+  padding: 40px 0 24px;
+}
+
+.Guoyanb_badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid var(--Guoyanb_card_border);
+  border-radius: 999px;
+  background: var(--Guoyanb_card);
+  color: var(--Guoyanb_cyan);
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+}
+
+.Guoyanb_title {
+  font-size: clamp(32px, 6vw, 54px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(120deg, #ffffff 20%, var(--Guoyanb_primary_light) 60%, var(--Guoyanb_cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 14px;
+}
+
+.Guoyanb_subtitle {
+  color: var(--Guoyanb_text_sub);
+  font-size: 17px;
+  margin-bottom: 26px;
+}
+
+.Guoyanb_meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.Guoyanb_meta_item {
+  padding: 8px 18px;
+  border-radius: 10px;
+  background: var(--Guoyanb_card);
+  border: 1px solid var(--Guoyanb_card_border);
+  font-size: 14px;
+  color: var(--Guoyanb_text);
+}
+
+.Guoyanb_meta_item span {
+  color: var(--Guoyanb_text_sub);
+  margin-right: 6px;
+}
+
+/* 区块标题 */
+.Guoyanb_section_title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 56px 0 26px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.Guoyanb_section_title::before {
+  content: "";
+  width: 5px;
+  height: 24px;
+  border-radius: 4px;
+  background: linear-gradient(var(--Guoyanb_primary), var(--Guoyanb_cyan));
+}
+
+.Guoyanb_section_title small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--Guoyanb_text_sub);
+}
+
+/* 导航卡片网格 */
+.Guoyanb_nav_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.Guoyanb_nav_card {
+  position: relative;
+  display: block;
+  padding: 28px 26px;
+  border-radius: var(--Guoyanb_radius);
+  background: var(--Guoyanb_card);
+  border: 1px solid var(--Guoyanb_card_border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--Guoyanb_shadow);
+  overflow: hidden;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.Guoyanb_nav_card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(5, 109, 232, 0.18), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.Guoyanb_nav_card:hover {
+  transform: translateY(-6px);
+  border-color: var(--Guoyanb_primary_light);
+  box-shadow: 0 18px 46px rgba(5, 109, 232, 0.28);
+}
+
+.Guoyanb_nav_card:hover::after {
+  opacity: 1;
+}
+
+.Guoyanb_card_icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  background: linear-gradient(135deg, var(--Guoyanb_primary), var(--Guoyanb_cyan));
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.Guoyanb_card_name {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.Guoyanb_card_desc {
+  font-size: 14px;
+  color: var(--Guoyanb_text_sub);
+  position: relative;
+  z-index: 1;
+}
+
+.Guoyanb_card_arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  color: var(--Guoyanb_primary_light);
+  font-size: 20px;
+  z-index: 1;
+  transition: transform 0.22s ease;
+}
+
+.Guoyanb_nav_card:hover .Guoyanb_card_arrow {
+  transform: translateX(5px);
+}
+
+/* 页脚 */
+.Guoyanb_footer {
+  margin-top: 64px;
+  text-align: center;
+  color: var(--Guoyanb_text_sub);
+  font-size: 13px;
+  border-top: 1px solid var(--Guoyanb_card_border);
+  padding-top: 26px;
+}
+
+/* 卡片未就绪状态（页面尚未创建时） */
+.Guoyanb_nav_card.Guoyanb_soon {
+  opacity: 0.62;
+  pointer-events: none;
+}

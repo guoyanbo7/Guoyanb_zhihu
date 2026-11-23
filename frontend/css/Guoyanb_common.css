@@ -1,0 +1,141 @@
+/*
+ * 姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+ * 文件：通用样式（变量、重置、通用组件），所有类名以 Guoyanb_ 开头
+ */
+
+:root {
+  /* 知乎品牌蓝 + 科技配色 */
+  --Guoyanb_primary: #056de8;
+  --Guoyanb_primary_light: #4e97ff;
+  --Guoyanb_cyan: #36d6ff;
+  --Guoyanb_bg_dark: #0a0e1a;
+  --Guoyanb_bg_mid: #101a35;
+  --Guoyanb_text: #eaf1ff;
+  --Guoyanb_text_sub: #9fb0d0;
+  --Guoyanb_card: rgba(255, 255, 255, 0.06);
+  --Guoyanb_card_border: rgba(120, 160, 255, 0.18);
+  --Guoyanb_success: #2ec26e;
+  --Guoyanb_danger: #ff5c6c;
+  --Guoyanb_radius: 16px;
+  --Guoyanb_shadow: 0 12px 40px rgba(0, 10, 40, 0.45);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  color: var(--Guoyanb_text);
+  background: linear-gradient(135deg, var(--Guoyanb_bg_dark), var(--Guoyanb_bg_mid));
+  background-attachment: fixed;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 背景动画画布：固定在最底层 */
+#Guoyanb_bg_canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block;
+}
+
+/* 内容层置于画布之上 */
+.Guoyanb_container {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 92%);
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+/* 通用按钮 */
+.Guoyanb_btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--Guoyanb_primary), var(--Guoyanb_primary_light));
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.Guoyanb_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(5, 109, 232, 0.4);
+}
+
+.Guoyanb_btn:active {
+  transform: translateY(0);
+}
+
+.Guoyanb_btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 通用输入框 */
+.Guoyanb_input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--Guoyanb_card_border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--Guoyanb_text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.Guoyanb_input::placeholder {
+  color: var(--Guoyanb_text_sub);
+}
+
+.Guoyanb_input:focus {
+  border-color: var(--Guoyanb_primary_light);
+  box-shadow: 0 0 0 3px rgba(78, 151, 255, 0.18);
+}
+
+/* 顶部返回链接 */
+.Guoyanb_topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.Guoyanb_back_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--Guoyanb_text_sub);
+  font-size: 14px;
+  transition: color 0.18s ease;
+}
+
+.Guoyanb_back_link:hover {
+  color: var(--Guoyanb_primary_light);
+}

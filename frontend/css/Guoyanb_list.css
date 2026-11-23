@@ -1,0 +1,143 @@
+/*
+ * 姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+ * 文件：列表页通用样式（接口信息块、数据卡片、状态提示）
+ */
+
+.Guoyanb_list_head {
+  margin-bottom: 26px;
+}
+
+.Guoyanb_list_head h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.Guoyanb_list_head p {
+  color: var(--Guoyanb_text_sub);
+  font-size: 14px;
+}
+
+/* 接口信息块：展示接口地址，可点击查看原始数据 */
+.Guoyanb_endpoint {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(5, 109, 232, 0.1);
+  border: 1px solid var(--Guoyanb_card_border);
+  margin-bottom: 28px;
+}
+
+.Guoyanb_method {
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: var(--Guoyanb_success);
+  color: #06281a;
+  font-weight: 700;
+  font-size: 13px;
+  font-family: Consolas, monospace;
+}
+
+.Guoyanb_endpoint code {
+  font-family: Consolas, "Courier New", monospace;
+  color: var(--Guoyanb_cyan);
+  word-break: break-all;
+  font-size: 14px;
+}
+
+.Guoyanb_endpoint a {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--Guoyanb_primary_light);
+  border: 1px solid var(--Guoyanb_card_border);
+  padding: 5px 14px;
+  border-radius: 8px;
+  transition: background 0.18s ease;
+}
+
+.Guoyanb_endpoint a:hover {
+  background: rgba(78, 151, 255, 0.16);
+}
+
+/* 状态提示 */
+.Guoyanb_status {
+  padding: 26px;
+  text-align: center;
+  color: var(--Guoyanb_text_sub);
+  font-size: 15px;
+}
+
+.Guoyanb_status.Guoyanb_error {
+  color: #ff9aa4;
+  background: rgba(255, 92, 108, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 92, 108, 0.4);
+}
+
+/* 数据卡片列表 */
+.Guoyanb_card_list {
+  display: grid;
+  gap: 18px;
+}
+
+.Guoyanb_data_card {
+  padding: 24px 26px;
+  border-radius: 14px;
+  background: var(--Guoyanb_card);
+  border: 1px solid var(--Guoyanb_card_border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.Guoyanb_data_card:hover {
+  transform: translateY(-3px);
+  border-color: var(--Guoyanb_primary_light);
+}
+
+.Guoyanb_data_card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.Guoyanb_card_meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--Guoyanb_text_sub);
+  margin-bottom: 12px;
+}
+
+.Guoyanb_card_meta .Guoyanb_tag {
+  color: var(--Guoyanb_cyan);
+}
+
+.Guoyanb_data_card p {
+  font-size: 14px;
+  color: var(--Guoyanb_text_sub);
+  margin-bottom: 14px;
+}
+
+.Guoyanb_card_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.Guoyanb_views {
+  color: var(--Guoyanb_text_sub);
+}
+
+.Guoyanb_origin_link {
+  color: var(--Guoyanb_primary_light);
+}
+
+.Guoyanb_origin_link:hover {
+  text-decoration: underline;
+}

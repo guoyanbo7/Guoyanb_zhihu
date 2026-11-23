@@ -1,0 +1,89 @@
+/*
+ * 姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+ * 文件：图文列表页专属样式（图片网格卡片）
+ */
+
+.Guoyanb_gallery_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.Guoyanb_gallery_item {
+  border-radius: 14px;
+  background: var(--Guoyanb_card);
+  border: 1px solid var(--Guoyanb_card_border);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.Guoyanb_gallery_item:hover {
+  transform: translateY(-5px);
+  border-color: var(--Guoyanb_primary_light);
+  box-shadow: 0 16px 38px rgba(5, 109, 232, 0.26);
+}
+
+.Guoyanb_item_imgwrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.Guoyanb_item_imgwrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.Guoyanb_gallery_item:hover .Guoyanb_item_imgwrap img {
+  transform: scale(1.06);
+}
+
+.Guoyanb_item_category {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgba(5, 109, 232, 0.85);
+  color: #fff;
+  font-size: 12px;
+}
+
+.Guoyanb_item_body {
+  padding: 18px 18px 20px;
+}
+
+.Guoyanb_item_body h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.Guoyanb_item_body p {
+  font-size: 13px;
+  color: var(--Guoyanb_text_sub);
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.Guoyanb_item_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--Guoyanb_text_sub);
+}
+
+.Guoyanb_like {
+  color: #ff8fa0;
+}

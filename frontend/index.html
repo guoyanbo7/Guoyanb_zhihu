@@ -1,0 +1,65 @@
+<!--
+  姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+  页面：项目首页（canvas 背景动画 + 页面链接导航）
+  项目名称：知乎制作和模仿 | 项目类别：模仿
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>知乎制作和模仿 · 首页</title>
+  <link rel="stylesheet" href="css/Guoyanb_common.css" />
+  <link rel="stylesheet" href="css/Guoyanb_index.css" />
+</head>
+<body>
+  <!-- 背景动画画布 -->
+  <canvas id="Guoyanb_bg_canvas"></canvas>
+
+  <div class="Guoyanb_container">
+    <!-- 头部信息 -->
+    <header class="Guoyanb_hero">
+      <span class="Guoyanb_badge">项目类别 · 模仿</span>
+      <h1 class="Guoyanb_title">知乎制作和模仿</h1>
+      <p class="Guoyanb_subtitle">基于原生 HTML / CSS / JavaScript + Node.js + MySQL 的全栈项目</p>
+      <div class="Guoyanb_meta">
+        <div class="Guoyanb_meta_item"><span>姓名</span>郭彦伯</div>
+        <div class="Guoyanb_meta_item"><span>学号</span>24002060710</div>
+      </div>
+    </header>
+
+    <!-- 页面链接导航（每完成一个 HTML 页面，在此追加对应入口） -->
+    <h2 class="Guoyanb_section_title">页面导航 <small>点击卡片进入对应功能页</small></h2>
+    <section class="Guoyanb_nav_grid" id="Guoyanb_nav_grid">
+
+      <a class="Guoyanb_nav_card" href="database.html">
+        <div class="Guoyanb_card_icon">🔗</div>
+        <div class="Guoyanb_card_name">数据库连接测试</div>
+        <p class="Guoyanb_card_desc">输入用户名与密码连接 MySQL，成功与失败均有提示</p>
+        <span class="Guoyanb_card_arrow">→</span>
+      </a>
+
+      <a class="Guoyanb_nav_card" href="news.html">
+        <div class="Guoyanb_card_icon">📰</div>
+        <div class="Guoyanb_card_name">科技新闻列表</div>
+        <p class="Guoyanb_card_desc">新闻数据存储于数据库，展示后端接口链接与数据内容</p>
+        <span class="Guoyanb_card_arrow">→</span>
+      </a>
+
+      <a class="Guoyanb_nav_card" href="gallery.html">
+        <div class="Guoyanb_card_icon">🖼️</div>
+        <div class="Guoyanb_card_name">图文列表</div>
+        <p class="Guoyanb_card_desc">图文数据独立建表，展示后端接口链接与图文内容</p>
+        <span class="Guoyanb_card_arrow">→</span>
+      </a>
+
+    </section>
+
+    <footer class="Guoyanb_footer">
+      郭彦伯 · 24002060710 · 知乎制作和模仿（模仿）&nbsp;|&nbsp; 后端端口 8201
+    </footer>
+  </div>
+
+  <script src="js/Guoyanb_canvas.js"></script>
+</body>
+</html>

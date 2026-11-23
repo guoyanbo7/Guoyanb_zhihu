@@ -1,0 +1,44 @@
+<!--
+  姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+  页面：图文列表（展示后端接口链接与图文数据内容，图片使用网络图片）
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>图文列表 · 知乎制作和模仿</title>
+  <link rel="stylesheet" href="css/Guoyanb_common.css" />
+  <link rel="stylesheet" href="css/Guoyanb_list.css" />
+  <link rel="stylesheet" href="css/Guoyanb_gallery.css" />
+</head>
+<body>
+  <canvas id="Guoyanb_bg_canvas"></canvas>
+
+  <div class="Guoyanb_container">
+    <div class="Guoyanb_topbar">
+      <a class="Guoyanb_back_link" href="index.html">← 返回首页</a>
+    </div>
+
+    <div class="Guoyanb_list_head">
+      <h1>🖼️ 图文列表</h1>
+      <p>图文数据独立建表存储，通过后端 RESTful 接口获取，图片采用网络图片</p>
+    </div>
+
+    <!-- 后端接口链接 -->
+    <div class="Guoyanb_endpoint">
+      <span class="Guoyanb_method">GET</span>
+      <code>http://localhost:8201/api/gallery</code>
+      <a href="http://localhost:8201/api/gallery" target="_blank" rel="noopener">查看原始 JSON</a>
+    </div>
+
+    <!-- 加载状态 / 图文网格 -->
+    <div id="Guoyanb_gallery_box">
+      <div class="Guoyanb_status">正在加载图文数据...</div>
+    </div>
+  </div>
+
+  <script src="js/Guoyanb_canvas.js"></script>
+  <script src="js/Guoyanb_gallery.js"></script>
+</body>
+</html>

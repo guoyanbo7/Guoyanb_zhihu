@@ -1,0 +1,107 @@
+/*
+ * 姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+ * 文件：功能页通用样式（卡片、表单、结果提示、接口信息）
+ */
+
+.Guoyanb_page_card {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 36px 34px;
+  border-radius: var(--Guoyanb_radius);
+  background: var(--Guoyanb_card);
+  border: 1px solid var(--Guoyanb_card_border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--Guoyanb_shadow);
+}
+
+.Guoyanb_page_title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.Guoyanb_page_desc {
+  color: var(--Guoyanb_text_sub);
+  font-size: 14px;
+  margin-bottom: 26px;
+}
+
+.Guoyanb_form_group {
+  margin-bottom: 18px;
+}
+
+.Guoyanb_form_group label {
+  display: block;
+  font-size: 14px;
+  color: var(--Guoyanb_text_sub);
+  margin-bottom: 8px;
+}
+
+.Guoyanb_form_actions {
+  margin-top: 26px;
+  display: flex;
+  gap: 12px;
+}
+
+.Guoyanb_form_actions .Guoyanb_btn {
+  flex: 1;
+}
+
+/* 结果提示框 */
+.Guoyanb_result {
+  margin-top: 24px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  display: none;
+  word-break: break-all;
+}
+
+.Guoyanb_result.Guoyanb_show {
+  display: block;
+}
+
+.Guoyanb_result.Guoyanb_ok {
+  background: rgba(46, 194, 110, 0.12);
+  border: 1px solid rgba(46, 194, 110, 0.45);
+  color: #7ff0b0;
+}
+
+.Guoyanb_result.Guoyanb_err {
+  background: rgba(255, 92, 108, 0.12);
+  border: 1px solid rgba(255, 92, 108, 0.45);
+  color: #ff9aa4;
+}
+
+.Guoyanb_result pre {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+  overflow-x: auto;
+  color: #cfe0ff;
+}
+
+/* 接口地址信息块 */
+.Guoyanb_api_info {
+  margin-bottom: 24px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(5, 109, 232, 0.1);
+  border: 1px solid var(--Guoyanb_card_border);
+  font-size: 13px;
+}
+
+.Guoyanb_api_info .Guoyanb_api_label {
+  color: var(--Guoyanb_text_sub);
+  margin-bottom: 4px;
+}
+
+.Guoyanb_api_info code {
+  font-family: Consolas, "Courier New", monospace;
+  color: var(--Guoyanb_cyan);
+  word-break: break-all;
+}
