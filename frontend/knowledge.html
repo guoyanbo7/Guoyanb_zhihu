@@ -1,0 +1,75 @@
+<!--
+  姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+  页面：知识库 RAG（文件上传 / 知识库管理 / 基于知识库的问答）
+  说明：前端零第三方依赖，经 /api/kb 接口代理，密钥不暴露；收发数据在控制台输出
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>知识库 RAG · 智能问答</title>
+  <link rel="stylesheet" href="css/Guoyanb_common.css" />
+  <link rel="stylesheet" href="css/Guoyanb_kb.css" />
+</head>
+<body>
+  <div class="Guoyanb_container Guoyanb_kb_container">
+
+    <!-- 顶部返回栏 -->
+    <div class="Guoyanb_topbar">
+      <a class="Guoyanb_back_link" href="index.html">← 返回首页</a>
+      <span class="Guoyanb_kb_model_tag">向量模型：bge-m3 · 对话：DeepSeek-V4-Flash</span>
+    </div>
+
+    <!-- 一、文件上传 -->
+    <section class="Guoyanb_kb_card">
+      <h2 class="Guoyanb_kb_section_title">① 知识库文件上传</h2>
+      <p class="Guoyanb_kb_section_desc">支持 TXT / PDF / DOC / DOCX / PPT / PPTX，单个文件不超过 20MB，上传后自动解析、分块并向量化</p>
+
+      <div class="Guoyanb_drop_zone" id="Guoyanb_drop_zone">
+        <div class="Guoyanb_drop_icon">📁</div>
+        <p class="Guoyanb_drop_text">点击选择文件，或将文件拖拽到此处</p>
+        <p class="Guoyanb_drop_hint">系统将自动构建专属知识库</p>
+        <input type="file" id="Guoyanb_file_input" accept=".txt,.pdf,.doc,.docx,.ppt,.pptx" hidden />
+      </div>
+
+      <div class="Guoyanb_upload_status" id="Guoyanb_upload_status" hidden></div>
+    </section>
+
+    <!-- 二、知识库管理 -->
+    <section class="Guoyanb_kb_card">
+      <h2 class="Guoyanb_kb_section_title">② 知识库管理</h2>
+      <p class="Guoyanb_kb_section_desc">共 <span id="Guoyanb_file_count">0</span> 个知识库文件，可查看分块或删除</p>
+
+      <div class="Guoyanb_file_list" id="Guoyanb_file_list">
+        <p class="Guoyanb_empty_hint">暂无知识库文件，请先在上方上传</p>
+      </div>
+    </section>
+
+    <!-- 三、基于知识库的问答 -->
+    <section class="Guoyanb_kb_card Guoyanb_kb_ask_card">
+      <h2 class="Guoyanb_kb_section_title">③ 基于知识库的问答</h2>
+      <p class="Guoyanb_kb_section_desc">答案仅依据知识库内容生成，下方显示引用来源，按 F12 查看控制台收发数据</p>
+
+      <div class="Guoyanb_kb_window" id="Guoyanb_kb_window">
+        <div class="Guoyanb_msg Guoyanb_msg_ai">
+          <div class="Guoyanb_msg_avatar">AI</div>
+          <div class="Guoyanb_msg_bubble">你好，我是知识库问答助手。上传资料后，尽管向我提问吧。</div>
+        </div>
+      </div>
+
+      <div class="Guoyanb_chat_input_bar">
+        <textarea
+          id="Guoyanb_kb_input"
+          class="Guoyanb_chat_input"
+          rows="1"
+          placeholder="输入问题，Enter 发送，Shift+Enter 换行"></textarea>
+        <button class="Guoyanb_btn Guoyanb_send_btn" id="Guoyanb_kb_send" type="button">提问</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/Guoyanb_kb.js"></script>
+</body>
+</html>

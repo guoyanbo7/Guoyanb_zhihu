@@ -110,3 +110,80 @@
 { "code": 3002, "msg": "AI 回复失败：...", "data": {} }
 ```
 - 修改时间：2026-11-23
+
+---
+
+### 8. 知识库文件上传（RAG）
+- 接口路径：`/api/kb/upload`
+- HTTP 方法：POST
+- 请求参数：`multipart/form-data`，文件字段名 `Guoyanb_file`，支持 .txt/.pdf/.doc/.docx/.ppt/.pptx，单文件 ≤20MB；后端自动解析、分块、向量化并存储
+- 响应示例（成功）：
+```json
+{
+  "code": 0,
+  "msg": "知识库文件上传并构建成功",
+  "data": {
+    "id": "kb_xxx", "originalName": "云栖智行产品手册.docx", "ext": ".docx",
+    "size": 37683, "charCount": 516, "chunkCount": 2, "uploadTime": "2026-11-23T12:49:00.000Z"
+  }
+}
+```
+- 响应示例（失败）：`{ "code": 4002, "msg": "知识库构建失败：...", "data": {} }`
+- 修改时间：2026-11-23
+
+---
+
+### 9. 知识库文件列表
+- 接口路径：`/api/kb/files`
+- HTTP 方法：GET
+- 请求参数：无
+- 响应示例：
+```json
+{ "code": 0, "msg": "知识库列表获取成功", "data": { "total": 2, "list": [ { "id": "kb_xxx", "originalName": "...", "chunkCount": 2, "uploadTime": "..." } ] } }
+```
+- 修改时间：2026-11-23
+
+---
+
+### 10. 知识库文件详情（含分块文本）
+- 接口路径：`/api/kb/files/:id`
+- HTTP 方法：GET
+- 请求参数：路径参数 id（示例如 `/api/kb/files/kb_xxx`）
+- 响应格式：`{ "code": 0, "msg": "知识库详情获取成功", "data": { "meta": { ... }, "chunks": [ { "index": 0, "text": "..." } ] } }`
+- 修改时间：2026-11-23
+
+---
+
+### 11. 删除知识库文件
+- 接口路径：`/api/kb/files/:id`
+- HTTP 方法：DELETE
+- 请求参数：路径参数 id
+- 响应示例：`{ "code": 0, "msg": "知识库文件已删除", "data": { "id": "kb_xxx" } }`
+- 修改时间：2026-11-23
+
+---
+
+### 12. 基于知识库的问答（RAG）
+- 接口路径：`/api/kb/ask`
+- HTTP 方法：POST
+- 请求参数（JSON）：
+```json
+{ "question": "智行 Pro 智能手表卖多少钱？", "topK": 4 }
+```
+- 响应示例（成功）：
+```json
+{
+  "code": 0,
+  "msg": "知识库问答成功",
+  "data": {
+    "model": "deepseek-ai/DeepSeek-V4-Flash",
+    "answer": "根据参考资料1，智行 Pro 智能手表的售价为899元。",
+    "usage": { "prompt_tokens": 600, "completion_tokens": 20, "total_tokens": 620 },
+    "refs": [
+      { "fileName": "云栖智行产品手册.docx", "chunkIndex": 0, "score": 0.6949, "text": "..." }
+    ]
+  }
+}
+```
+- 响应示例（失败）：`{ "code": 4004, "msg": "知识库问答失败：...", "data": {} }`
+- 修改时间：2026-11-23

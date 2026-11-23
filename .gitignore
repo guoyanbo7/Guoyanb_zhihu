@@ -19,3 +19,7 @@ desktop.ini
 # 编辑器
 .vscode/
 .idea/
+
+# 知识库：上传的原始文件与本地向量数据（运行时生成，不提交）
+backend/uploads/
+backend/kb_data/

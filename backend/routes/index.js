@@ -26,4 +26,7 @@ Guoyanb_router.use('/gallery', require('./Guoyanb_galleryRoute'));
 // AI 聊天路由：/api/chat
 Guoyanb_router.use('/chat', require('./Guoyanb_chatRoute'));
 
+// 知识库 RAG 路由：/api/kb/...
+Guoyanb_router.use('/kb', require('./Guoyanb_kbRoute'));
+
 module.exports = Guoyanb_router;

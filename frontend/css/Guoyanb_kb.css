@@ -1,0 +1,359 @@
+/*
+ * 姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+ * 文件：知识库 RAG 页样式（上传、文件管理、问答），类名以 Guoyanb_ 开头
+ */
+
+.Guoyanb_kb_container {
+  width: min(1080px, 94%);
+}
+
+.Guoyanb_kb_model_tag {
+  font-size: 13px;
+  color: var(--Guoyanb_text_sub);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--Guoyanb_card);
+  border: 1px solid var(--Guoyanb_card_border);
+}
+
+/* 卡片 */
+.Guoyanb_kb_card {
+  margin-bottom: 24px;
+  padding: 24px;
+  border-radius: var(--Guoyanb_radius);
+  background: var(--Guoyanb_card);
+  border: 1px solid var(--Guoyanb_card_border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--Guoyanb_shadow);
+}
+
+.Guoyanb_kb_section_title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.Guoyanb_kb_section_desc {
+  font-size: 13px;
+  color: var(--Guoyanb_text_sub);
+  margin-bottom: 18px;
+}
+
+/* ===== 上传拖拽区 ===== */
+.Guoyanb_drop_zone {
+  position: relative;
+  border: 2px dashed var(--Guoyanb_card_border);
+  border-radius: 14px;
+  padding: 38px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.Guoyanb_drop_zone:hover,
+.Guoyanb_drop_zone.Guoyanb_drag_over {
+  border-color: var(--Guoyanb_primary_light);
+  background: rgba(78, 151, 255, 0.08);
+}
+
+.Guoyanb_drop_icon {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.Guoyanb_drop_text {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.Guoyanb_drop_hint {
+  font-size: 13px;
+  color: var(--Guoyanb_text_sub);
+  margin-top: 4px;
+}
+
+/* 上传状态提示 */
+.Guoyanb_upload_status {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.Guoyanb_upload_status.Guoyanb_status_ok {
+  background: rgba(46, 194, 110, 0.12);
+  border: 1px solid rgba(46, 194, 110, 0.5);
+  color: #7fe0a8;
+}
+
+.Guoyanb_upload_status.Guoyanb_status_fail {
+  background: rgba(255, 92, 108, 0.12);
+  border: 1px solid rgba(255, 92, 108, 0.5);
+  color: #ff9aa4;
+}
+
+.Guoyanb_upload_status.Guoyanb_status_loading {
+  background: rgba(78, 151, 255, 0.12);
+  border: 1px solid rgba(78, 151, 255, 0.5);
+  color: #9cc2ff;
+}
+
+/* ===== 文件列表 ===== */
+.Guoyanb_empty_hint {
+  font-size: 14px;
+  color: var(--Guoyanb_text_sub);
+  padding: 18px 4px;
+  text-align: center;
+}
+
+.Guoyanb_file_item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--Guoyanb_card_border);
+  margin-bottom: 12px;
+}
+
+.Guoyanb_file_icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: rgba(78, 151, 255, 0.14);
+}
+
+.Guoyanb_file_meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.Guoyanb_file_name {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Guoyanb_file_info {
+  font-size: 12px;
+  color: var(--Guoyanb_text_sub);
+  margin-top: 3px;
+}
+
+.Guoyanb_file_actions {
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.Guoyanb_action_btn {
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid var(--Guoyanb_card_border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--Guoyanb_text);
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.Guoyanb_action_btn:hover {
+  border-color: var(--Guoyanb_primary_light);
+}
+
+.Guoyanb_action_btn.Guoyanb_delete_btn:hover {
+  background: rgba(255, 92, 108, 0.18);
+  border-color: var(--Guoyanb_danger);
+  color: #ff9aa4;
+}
+
+/* 分块展开区 */
+.Guoyanb_chunks {
+  margin: 0 0 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(5, 20, 50, 0.5);
+  border: 1px solid var(--Guoyanb_card_border);
+}
+
+.Guoyanb_chunks_title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--Guoyanb_primary_light);
+  margin-bottom: 10px;
+}
+
+.Guoyanb_chunk_item {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--Guoyanb_text_sub);
+  padding: 8px 10px;
+  border-left: 3px solid var(--Guoyanb_primary);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ===== 问答区 ===== */
+.Guoyanb_kb_window {
+  height: 380px;
+  overflow-y: auto;
+  padding: 8px 6px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Guoyanb_msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 84%;
+}
+
+.Guoyanb_msg_avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--Guoyanb_primary), var(--Guoyanb_primary_light));
+}
+
+.Guoyanb_msg_bubble {
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.Guoyanb_msg_ai .Guoyanb_msg_bubble {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--Guoyanb_card_border);
+  border-top-left-radius: 4px;
+}
+
+.Guoyanb_msg_user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.Guoyanb_msg_user .Guoyanb_msg_avatar {
+  background: linear-gradient(135deg, #13c2c2, var(--Guoyanb_cyan));
+}
+
+.Guoyanb_msg_user .Guoyanb_msg_bubble {
+  background: linear-gradient(135deg, var(--Guoyanb_primary), var(--Guoyanb_primary_light));
+  color: #fff;
+  border-top-right-radius: 4px;
+}
+
+.Guoyanb_msg_error .Guoyanb_msg_bubble {
+  background: rgba(255, 92, 108, 0.14);
+  border: 1px solid rgba(255, 92, 108, 0.5);
+  color: #ff9aa4;
+}
+
+/* 引用来源 */
+.Guoyanb_refs {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--Guoyanb_card_border);
+}
+
+.Guoyanb_refs_title {
+  font-size: 12px;
+  color: var(--Guoyanb_primary_light);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.Guoyanb_ref_tag {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--Guoyanb_text_sub);
+  padding: 3px 10px;
+  margin: 0 6px 6px 0;
+  border-radius: 999px;
+  background: rgba(78, 151, 255, 0.12);
+  border: 1px solid var(--Guoyanb_card_border);
+}
+
+/* 加载中三点动画 */
+.Guoyanb_typing {
+  display: inline-flex;
+  gap: 5px;
+  padding: 4px 2px;
+}
+
+.Guoyanb_typing span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--Guoyanb_text_sub);
+  animation: Guoyanb_kb_blink 1.2s infinite ease-in-out;
+}
+
+.Guoyanb_typing span:nth-child(2) { animation-delay: 0.2s; }
+.Guoyanb_typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes Guoyanb_kb_blink {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* 输入区 */
+.Guoyanb_chat_input_bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--Guoyanb_card_border);
+}
+
+.Guoyanb_chat_input {
+  flex: 1;
+  resize: none;
+  max-height: 120px;
+  padding: 12px 14px;
+  border: 1px solid var(--Guoyanb_card_border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--Guoyanb_text);
+  font-size: 15px;
+  font-family: inherit;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.Guoyanb_chat_input::placeholder {
+  color: var(--Guoyanb_text_sub);
+}
+
+.Guoyanb_chat_input:focus {
+  border-color: var(--Guoyanb_primary_light);
+  box-shadow: 0 0 0 3px rgba(78, 151, 255, 0.18);
+}
+
+.Guoyanb_send_btn {
+  padding: 12px 26px;
+}
