@@ -1,0 +1,54 @@
+<!--
+  姓名：郭彦伯 | 学号：24002060710 | 时间：2026-11-23 | 大模型：豆包 Doubao
+  页面：AI 聊天（硅基流动 SiliconFlow · DeepSeek-V4-Flash）
+  说明：前端零第三方依赖，通过后端 /api/chat 代理调用，密钥不暴露；收发数据在控制台输出
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 聊天 · 硅基流动</title>
+  <link rel="stylesheet" href="css/Guoyanb_common.css" />
+  <link rel="stylesheet" href="css/Guoyanb_chat.css" />
+</head>
+<body>
+  <div class="Guoyanb_container Guoyanb_chat_container">
+
+    <!-- 顶部返回栏 -->
+    <div class="Guoyanb_topbar">
+      <a class="Guoyanb_back_link" href="index.html">← 返回首页</a>
+      <span class="Guoyanb_chat_model_tag">模型：DeepSeek-V4-Flash</span>
+    </div>
+
+    <!-- 聊天主卡片 -->
+    <main class="Guoyanb_chat_card">
+      <header class="Guoyanb_chat_header">
+        <h1 class="Guoyanb_chat_title">AI 智能聊天</h1>
+        <p class="Guoyanb_chat_desc">基于硅基流动 SiliconFlow 接口，多轮对话，按 F12 查看控制台收发数据</p>
+      </header>
+
+      <!-- 消息显示区 -->
+      <div class="Guoyanb_chat_window" id="Guoyanb_chat_window">
+        <div class="Guoyanb_msg Guoyanb_msg_ai">
+          <div class="Guoyanb_msg_avatar">AI</div>
+          <div class="Guoyanb_msg_bubble">你好，我是硅基流动 AI 助手，有什么可以帮你的吗？</div>
+        </div>
+      </div>
+
+      <!-- 输入区 -->
+      <div class="Guoyanb_chat_input_bar">
+        <textarea
+          id="Guoyanb_chat_input"
+          class="Guoyanb_chat_input"
+          rows="1"
+          placeholder="输入消息，Enter 发送，Shift+Enter 换行"></textarea>
+        <button class="Guoyanb_btn Guoyanb_send_btn" id="Guoyanb_send_btn" type="button">发送</button>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/Guoyanb_chat.js"></script>
+</body>
+</html>

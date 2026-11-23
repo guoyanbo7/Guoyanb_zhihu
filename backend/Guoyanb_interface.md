@@ -75,3 +75,38 @@
 - 请求参数：路径参数 id（示例如 `/api/gallery/1`）
 - 响应格式：`{ "code": 0, "msg": "图文详情获取成功", "data": { ...单条图文完整字段 } }`
 - 修改时间：2026-11-23
+
+---
+
+### 7. AI 聊天（硅基流动）
+- 接口路径：`/api/chat`
+- HTTP 方法：POST
+- 说明：后端代理转发硅基流动 chat/completions，密钥仅存于 backend/.env，不向前端暴露
+- 请求参数（JSON，messages 为完整对话历史）：
+```json
+{
+  "messages": [
+    { "role": "system", "content": "你是一个有用、友好的中文助手" },
+    { "role": "user", "content": "你好" }
+  ]
+}
+```
+- 响应示例（成功）：
+```json
+{
+  "code": 0,
+  "msg": "AI 回复成功",
+  "data": {
+    "model": "deepseek-ai/DeepSeek-V4-Flash",
+    "message": { "role": "assistant", "content": "你好，请问有什么可以帮你？" },
+    "content": "你好，请问有什么可以帮你？",
+    "usage": { "prompt_tokens": 15, "completion_tokens": 10, "total_tokens": 25 },
+    "raw": { "...大模型完整原始响应": "" }
+  }
+}
+```
+- 响应示例（失败）：
+```json
+{ "code": 3002, "msg": "AI 回复失败：...", "data": {} }
+```
+- 修改时间：2026-11-23
